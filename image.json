@@ -1,17 +1,16 @@
 [
     {
-      name: "${var.container_name}",
-      image: "${format("%s:%s",  var.docker_image, var.docker_tag)}",
-      cpu: 1024,
-      memory: 2048,
-      networkMode: "awsvpc",
-      portMappings: [
+      "name": "testapp",
+      "image": "${app_image}",
+      "cpu": "${fargate_cpu}",
+      "memory": "${fargate_memory}",
+      "networkMode": "awsvpc",
+      
+      "portMappings": [
         {
-          containerPort: var.app_port,
-          hostPort: var.app_port
+          "containerPort": "${app_port}",
+          "hostPort": "${app_port}"
         }
-
-
       ]
     }
-]
+  ]
